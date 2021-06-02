@@ -30,7 +30,7 @@ class LoomchildSegmenter(ToolWrapper):
         else:
             argv = ["java", "-cp", class_path, "net.loomchild.segment.ui.console.Segment", "-l", lang, "-c"]
 
-        super().__init__(argv, stderr=sys.stderr)
+        super().__init__(argv)
 
     def __str__(self):
         return "LoomchildSegmenter()".format()
