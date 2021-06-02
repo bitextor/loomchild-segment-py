@@ -1,0 +1,16 @@
+#!/bin/env python
+import argparse
+import sys
+import base64
+from loomchild.segmenter import LoomchildSegmenter
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-l', '--lang', dest="lang", required=True, type=str, help="Language of the input")
+options = parser.parse_args()
+
+segmenter = LoomchildSegmenter(options.lang)
+
+for doc in sys.stdin:
+    content = base64.b64decode(doc.strip().replace("\t", " ")).decode('utf-8')
+    output_text = segmenter.get_document_segmentation(content)
+    print(base64.b64encode(output_text.encode("utf-8")).decode("utf-8"))
