@@ -1,1 +1,1 @@
-toolwrapper==2.1.0
+toolwrapper>=0.4.1
