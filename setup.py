@@ -2,7 +2,7 @@
 
 import setuptools
 import subprocess
-import os.path
+import os
 import shutil
 from sys import argv
 
@@ -24,14 +24,19 @@ def compile_loomchild(current_path):
         subprocess.check_call(["unzip", "-o", os.path.join(current_path, "segment/segment-ui/target/segment-2.0.2-SNAPSHOT.zip"), 
             "segment-2.0.2-SNAPSHOT/lib/*", "-d", os.path.join(current_path, "loomchild/data")])
 
-    shutil.copytree(os.path.join(current_path, "segment/srx"), os.path.join(current_path, "loomchild/data/srx"), dirs_exist_ok=True)
+    src_dir = os.path.join(current_path, "segment/srx")
+    dst_dir = os.path.join(current_path, "loomchild/data/srx")
+    os.makedirs(dst_dir, exist_ok=True)
+    for item in os.listdir(src_dir):
+        if not os.path.isfile(item):
+            continue
+        shutil.copy(os.path.join(src_dir, item), os.path.join(dst_dir, item))
 
 if __name__=="__main__":
     with open("README.md", "r") as fh:
         long_description = fh.read()
     with open("requirements.txt", "r") as rf:
         requirements = rf.read().splitlines()
-
 
     compile_loomchild(os.path.dirname(os.path.abspath(__file__)))
 
