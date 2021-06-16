@@ -70,7 +70,7 @@ if __name__=="__main__":
             "Topic :: Software Development :: Libraries :: Python Modules",
         ],
         project_urls={
-            "Loomchild segment wrapper on GitHub": "https://github.com/zuny26/loomchild-segment-py",
+            "loomchild-segment-py on GitHub": "https://github.com/zuny26/loomchild-segment-py",
             "Loomchild segment on GitHub": "https://github.com/mbanon/loomchild",
             "Bifixer on GitHub": "https://github.com/bitextor/bifixer",
             "Prompsit Language Engineering": "http://www.prompsit.com",

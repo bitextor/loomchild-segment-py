@@ -6,10 +6,10 @@ System dependencies to build and use this package are `Maven` and `Java`.
 
 ## Installation
 
-This package can be installed with `pip` from source:
+This package can be installed with `pip` from pypi:
 
 ```bash
-pip install git+https://github.com/zuny26/loomchild-segment-py.git
+pip install loomchild-segment
 ```
 
 ## Usage
