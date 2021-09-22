@@ -1,6 +1,7 @@
 #!/usr/bin/env python     
 
 __author__ = "Marta Bañón (mbanon)"
+__version__ = "2.0.4"
 
 import importlib.util
 import json
@@ -21,7 +22,7 @@ class LoomchildSegmenter(ToolWrapper):
         self.lang = lang
         self.rules = self.getBestRules(lang)
 
-        class_path = f"{target_path}/segment-2.0.2-SNAPSHOT/lib/*"
+        class_path = f"{target_path}/segment-{__version__}-SNAPSHOT/lib/segment-ui-{__version__}-SNAPSHOT.jar:{target_path}/segment-{__version__}-SNAPSHOT/lib/*"
         rules_path = f"{srx_path}/{self.rules}"
 
 
