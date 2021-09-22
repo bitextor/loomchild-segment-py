@@ -17,7 +17,7 @@ pip install loomchild-segment
 Splitting a text into sentences:
 
 ```python
-from loomchild.segment import LoomchildSegmenter
+from loomchild.segmenter import LoomchildSegmenter
 
 segmenter = LoomchildSegmenter(lang)
 # segmenting a single line:
