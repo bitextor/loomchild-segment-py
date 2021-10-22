@@ -49,10 +49,10 @@ class LoomchildSegmenter(ToolWrapper):
     def getBestRules(self, lang):
         # Based on benchmarks: https://docs.google.com/spreadsheets/d/1mGJ9MSyMlsK0EUDRC2J50uxApiti3ggnlrzAWn8rkMg/edit?usp=sharing
 
-        omegaTLangs = ["bg", "cs", "sl", "sv"]
-        ptdrLangs = ["el", "et", "fi", "hr", "hu", "lt", "lv"]
-        nonAggressiveLangs = ["es", "it", "nb", "nn"]
-        languageToolLangs = ["da", "de", "en", "fr", "nl", "pl", "pt", "ro", "sk", "sr", "uk"]
+        omegaTLangs = ["bg", "cs", "es", "me", "mk", "mt", "sl", "sq", "sv"]
+        ptdrLangs = ["el", "et", "fi", "hr", "hu", "is", "lt", "lv"]
+        nonAggressiveLangs = ["it", "nb", "nn"]
+        languageToolLangs = ["da", "de", "en", "fr", "nl", "pl", "pt", "ro", "sk", "sr", "tr", "uk"]
 
         if lang in omegaTLangs:
             return "OmegaT.srx"
