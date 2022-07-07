@@ -61,7 +61,8 @@ if __name__=="__main__":
         package_data={
             "loomchild": [
                 f"data/segment-{__version__}-SNAPSHOT/lib/*.jar",
-                "data/srx/*.srx"
+                "data/srx/*.srx",
+                "../requirements.txt"
             ]
         },
         classifiers=[
