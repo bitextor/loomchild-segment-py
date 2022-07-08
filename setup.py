@@ -31,7 +31,13 @@ def compile_loomchild(current_path):
 
     src_dir = os.path.join(current_path, "segment/srx")
     dst_dir = os.path.join(current_path, "loomchild/data/srx")
+
+    if not os.path.isdir(src_dir):
+        # build
+        return
+
     os.makedirs(dst_dir, exist_ok=True)
+
     for item in os.listdir(src_dir):
         if not os.path.isfile(f"{src_dir}/{item}"):
             continue
