@@ -6,27 +6,28 @@ import os
 import shutil
 from sys import argv
 
-__version__ = "2.0.4"
+segment_version = "2.0.4"
+__version__ = "2.0.4.2"
 
 def compile_loomchild(current_path):
     jars = ["commons-cli-1.2.jar",  "commons-logging-1.2.jar",
         "gson-2.8.0.jar",  "hamcrest-core-1.3.jar", "jakarta.activation-1.2.2.jar",
         "jakarta.xml.bind-api-2.3.3.jar", "javax.activation-api-1.2.0.jar",
         "jaxb-api-2.3.1.jar",  "jaxb-core-2.3.0.1.jar", "jaxb-impl-2.3.3.jar",
-        "junit-4.13.1.jar",  f"segment-{__version__}-SNAPSHOT.jar",
-        f"segment-{__version__}-SNAPSHOT-tests.jar",  f"segment-ui-{__version__}-SNAPSHOT.jar"]
+        "junit-4.13.1.jar",  f"segment-{segment_version}-SNAPSHOT.jar",
+        f"segment-{segment_version}-SNAPSHOT-tests.jar",  f"segment-ui-{segment_version}-SNAPSHOT.jar"]
 
     all_compiled = True
     for f in jars:
-        if not os.path.isfile(os.path.join(current_path, "loomchild/data/segment-2.0.4-SNAPSHOT/lib", f)):
+        if not os.path.isfile(os.path.join(current_path, f"loomchild/data/segment-{segment_version}-SNAPSHOT/lib", f)):
             all_compiled = False
             break
 
     if not all_compiled:
         subprocess.check_call(["mvn", "clean", "install"], cwd=os.path.join(current_path, "segment/segment"))
         subprocess.check_call(["mvn", "clean", "install"], cwd=os.path.join(current_path, "segment/segment-ui"))
-        subprocess.check_call(["unzip", "-o", os.path.join(current_path, f"segment/segment-ui/target/segment-{__version__}-SNAPSHOT.zip"),
-            f"segment-{__version__}-SNAPSHOT/lib/*", "-d", os.path.join(current_path, "loomchild/data")])
+        subprocess.check_call(["unzip", "-o", os.path.join(current_path, f"segment/segment-ui/target/segment-{segment_version}-SNAPSHOT.zip"),
+            f"segment-{segment_version}-SNAPSHOT/lib/*", "-d", os.path.join(current_path, "loomchild/data")])
 
     src_dir = os.path.join(current_path, "segment/srx")
     dst_dir = os.path.join(current_path, "loomchild/data/srx")
@@ -56,11 +57,11 @@ if __name__=="__main__":
         description="Python wrapper for Loomchild segmenter",
         long_description=long_description,
         long_description_content_type="text/markdown",
-        url="https://github.com/zuny26/loomchild-segment-py",
+        url="https://github.com/bitextor/loomchild-segment-py",
         packages=["loomchild"],
         package_data={
             "loomchild": [
-                f"data/segment-{__version__}-SNAPSHOT/lib/*.jar",
+                f"data/segment-{segment_version}-SNAPSHOT/lib/*.jar",
                 "data/srx/*.srx",
                 "../requirements.txt"
             ]
@@ -75,8 +76,8 @@ if __name__=="__main__":
             "Topic :: Software Development :: Libraries :: Python Modules",
         ],
         project_urls={
-            "loomchild-segment-py on GitHub": "https://github.com/zuny26/loomchild-segment-py",
-            "Loomchild segment on GitHub": "https://github.com/mbanon/loomchild",
+            "loomchild-segment-py on GitHub": "https://github.com/bitextor/loomchild-segment-py",
+            "Loomchild segment on GitHub": "https://github.com/mbanon/segment",
             "Bifixer on GitHub": "https://github.com/bitextor/bifixer",
             "Prompsit Language Engineering": "http://www.prompsit.com",
             "Paracrawl": "https://paracrawl.eu/"
